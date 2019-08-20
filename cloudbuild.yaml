@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/ben-masters-pg/pg-spinnaker-app-demo"]
+    env: ["PROJECT_ROOT=github.com/ben-masters-pg/pg-spinnaker-app-demo"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/pg-bmasters-sbx-d4c0/pg-spinnaker-app-demo:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/pg-bmasters-sbx-d4c0/pg-spinnaker-app-demo:$REVISION_ID"
